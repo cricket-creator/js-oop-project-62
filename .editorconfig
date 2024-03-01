@@ -1,0 +1,7 @@
+[Makefile]
+indent_style = tab
+
+[*.js]
+print_width = 120
+indent_style = space
+indent_size = 2
