@@ -1,6 +1,8 @@
 import ValidationSchema from "./ValidationSchema.js";
 
 class ObjectValidationSchema extends ValidationSchema {
+  schemaName = "object";
+
   shape(validationSchema) {
     this.addValidation("shape", (object) => {
       const keys = Object.keys(object);

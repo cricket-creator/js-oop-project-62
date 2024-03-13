@@ -1,6 +1,8 @@
 import ValidationSchema from "./ValidationSchema.js";
 
 class NumberValidationSchema extends ValidationSchema {
+  schemaName = "number";
+
   required() {
     this.addValidation("required", (value) => !!value || value === 0);
     return this;
