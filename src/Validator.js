@@ -1,5 +1,6 @@
 import ArrayValidationSchema from "./ArrayValidationSchema.js";
 import NumberValidationSchema from "./NumberValidationSchema.js";
+import ObjectValidationSchema from "./ObjectValidationSchema.js";
 import StringValidationSchema from "./StringValidationSchema.js";
 
 class Validator {
@@ -13,6 +14,10 @@ class Validator {
 
   array() {
     return new ArrayValidationSchema(this);
+  }
+
+  object() {
+    return new ObjectValidationSchema(this);
   }
 }
 
