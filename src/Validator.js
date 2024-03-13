@@ -1,7 +1,7 @@
-import ArrayValidationSchema from "./ArrayValidationSchema.js";
-import NumberValidationSchema from "./NumberValidationSchema.js";
-import ObjectValidationSchema from "./ObjectValidationSchema.js";
-import StringValidationSchema from "./StringValidationSchema.js";
+import ArrayValidationSchema from './ArrayValidationSchema.js';
+import NumberValidationSchema from './NumberValidationSchema.js';
+import ObjectValidationSchema from './ObjectValidationSchema.js';
+import StringValidationSchema from './StringValidationSchema.js';
 
 class Validator {
   constructor() {

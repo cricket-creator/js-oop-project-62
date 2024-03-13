@@ -10,10 +10,15 @@ class ValidationSchema {
 
   test(methodName, comparisonValue) {
     const customMethod = this.validator.customValidator.get(this.schemaName);
+    if (!customMethod) {
+      throw new Error(`No custom validation for ${this.schemaName} schema`);
+    }
     this.addValidation(methodName, (value) => {
       const validationFn = customMethod[methodName];
       if (!validationFn) {
-        throw new Error(`${methodName} method doesn't exist`);
+        throw new Error(
+          `Method ${methodName} doesn't exist in ${this.schemaName} schema`,
+        );
       }
       return validationFn(value, comparisonValue);
     });

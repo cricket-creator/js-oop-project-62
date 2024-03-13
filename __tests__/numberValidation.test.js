@@ -1,9 +1,9 @@
-import { describe, test, expect } from "@jest/globals";
-import Validator from "../index.js";
+import { describe, test, expect } from '@jest/globals';
+import Validator from '../index.js';
 
 const v = new Validator();
 
-describe("default", () => {
+describe('default', () => {
   const schema = v.number();
 
   const table = [{ value: null, expected: true }];
@@ -13,20 +13,20 @@ describe("default", () => {
   });
 });
 
-describe("required method", () => {
+describe('required method', () => {
   const schema = v.number().required();
 
   const table = [
-    { title: "is valid", value: null, expected: false },
-    { title: "is not valid", value: 7, expected: true },
+    { title: 'is not valid', value: null, expected: false },
+    { title: 'is valid', value: 7, expected: true },
   ];
 
-  test.each(table)("$title: $value", ({ value, expected }) => {
+  test.each(table)('$title: $value', ({ value, expected }) => {
     expect(schema.isValid(value)).toBe(expected);
   });
 });
 
-describe("positive method", () => {
+describe('positive method', () => {
   const schema = v.number().positive();
   const INTEGER = 10;
 
@@ -35,7 +35,7 @@ describe("positive method", () => {
   });
 });
 
-describe("range method", () => {
+describe('range method', () => {
   const schema = v.number().positive().range(-5, 5);
 
   const table = [
@@ -43,7 +43,7 @@ describe("range method", () => {
     { value: 5, expected: true },
   ];
 
-  test.each(table)("is $value in range (-5, 5)", ({ value, expected }) => {
+  test.each(table)('is $value in range (-5, 5)', ({ value, expected }) => {
     expect(schema.isValid(value)).toBe(expected);
   });
 });

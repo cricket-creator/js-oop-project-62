@@ -1,9 +1,9 @@
-import { describe, test, expect } from "@jest/globals";
-import Validator from "../index.js";
+import { describe, test, expect } from '@jest/globals';
+import Validator from '../index.js';
 
 const v = new Validator();
 
-describe("default", () => {
+describe('default', () => {
   const schema = v.array();
 
   const table = [null, undefined];
@@ -13,18 +13,18 @@ describe("default", () => {
   });
 });
 
-describe("required method", () => {
+describe('required method', () => {
   const schema = v.array().required();
 
   const table = [
     {
-      title: "is valid",
+      title: 'is valid',
       value: [],
       expected: true,
     },
-    { title: "is valid", value: ["hexlet"], expected: true },
-    { title: "is not valid", value: null, expected: false },
-    { title: "is not valid", value: undefined, expected: false },
+    { title: 'is valid', value: ['hexlet'], expected: true },
+    { title: 'is not valid', value: null, expected: false },
+    { title: 'is not valid', value: undefined, expected: false },
   ];
 
   test.each(table)('$title if required: "$value"', ({ value, expected }) => {
@@ -32,23 +32,23 @@ describe("required method", () => {
   });
 });
 
-describe("sizeof method", () => {
+describe('sizeof method', () => {
   const schema = v.array().sizeof(2);
 
   const table = [
     {
-      title: "is not valid",
-      value: ["hexlet"],
+      title: 'is not valid',
+      value: ['hexlet'],
       expected: false,
     },
-    { title: "is valid", value: ["hexlet", "code-basics"], expected: true },
+    { title: 'is valid', value: ['hexlet', 'code-basics'], expected: true },
     {
-      title: "is not valid",
-      value: ["hexlet", "code-basics", "code"],
+      title: 'is not valid',
+      value: ['hexlet', 'code-basics', 'code'],
       expected: false,
     },
-    { title: "is not valid", value: null, expected: false },
-    { title: "is not valid", value: undefined, expected: false },
+    { title: 'is not valid', value: null, expected: false },
+    { title: 'is not valid', value: undefined, expected: false },
   ];
 
   test.each(table)('$title if required: "$value"', ({ value, expected }) => {

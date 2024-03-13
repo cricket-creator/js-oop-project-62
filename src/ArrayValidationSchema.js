@@ -1,15 +1,18 @@
-import ValidationSchema from "./ValidationSchema.js";
+import ValidationSchema from './ValidationSchema.js';
 
 class ArrayValidationSchema extends ValidationSchema {
-  schemaName = "array";
+  constructor(validator) {
+    super(validator);
+    this.schemaName = 'array';
+  }
 
   required() {
-    this.addValidation("required", (value) => Array.isArray(value));
+    this.addValidation('required', (value) => Array.isArray(value));
     return this;
   }
 
   sizeof(length) {
-    this.addValidation("sizeof", (value) => value?.length === length);
+    this.addValidation('sizeof', (value) => value?.length === length);
     return this;
   }
 }

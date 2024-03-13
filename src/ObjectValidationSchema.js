@@ -1,10 +1,13 @@
-import ValidationSchema from "./ValidationSchema.js";
+import ValidationSchema from './ValidationSchema.js';
 
 class ObjectValidationSchema extends ValidationSchema {
-  schemaName = "object";
+  constructor(validator) {
+    super(validator);
+    this.schemaName = 'object';
+  }
 
   shape(validationSchema) {
-    this.addValidation("shape", (object) => {
+    this.addValidation('shape', (object) => {
       const keys = Object.keys(object);
       return keys.every((key) => {
         if (!Object.hasOwn(validationSchema, key)) {
