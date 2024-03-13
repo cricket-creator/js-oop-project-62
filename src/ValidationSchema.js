@@ -18,6 +18,10 @@ class ValidationSchema {
       return validationResult;
     });
   }
+
+  isValid(value) {
+    return this.validate(value);
+  }
 }
 
 export default ValidationSchema;

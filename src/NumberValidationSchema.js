@@ -15,10 +15,6 @@ class NumberValidationSchema extends ValidationSchema {
     this.addValidation("range", (value) => value >= start && value <= end);
     return this;
   }
-
-  isValid(value) {
-    return this.validate(value);
-  }
 }
 
 export default NumberValidationSchema;

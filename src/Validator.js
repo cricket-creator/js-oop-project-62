@@ -1,3 +1,4 @@
+import ArrayValidationSchema from "./ArrayValidationSchema.js";
 import NumberValidationSchema from "./NumberValidationSchema.js";
 import StringValidationSchema from "./StringValidationSchema.js";
 
@@ -8,6 +9,10 @@ class Validator {
 
   number() {
     return new NumberValidationSchema(this);
+  }
+
+  array() {
+    return new ArrayValidationSchema(this);
   }
 }
 

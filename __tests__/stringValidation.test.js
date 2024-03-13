@@ -1,20 +1,20 @@
 import { describe, test, expect } from "@jest/globals";
 import Validator from "../index.js";
 
+const v = new Validator();
+
 describe("default", () => {
-  const v = new Validator();
-  const stringSchema = v.string();
+  const schema = v.string();
 
   const table = ["", null, undefined];
 
   test.each(table)('is valid: "%s"', (value) => {
-    expect(stringSchema.isValid(value)).toBe(true);
+    expect(schema.isValid(value)).toBe(true);
   });
 });
 
 describe("required method", () => {
-  const v = new Validator();
-  const stringSchema = v.string().required();
+  const schema = v.string().required();
 
   const table = [
     {
@@ -28,14 +28,13 @@ describe("required method", () => {
   ];
 
   test.each(table)('$title if required: "$value"', ({ value, expected }) => {
-    expect(stringSchema.isValid(value)).toBe(expected);
+    expect(schema.isValid(value)).toBe(expected);
   });
 });
 
 const VALUE = "what does the fox say";
 describe(`"${VALUE}"`, () => {
-  const v = new Validator();
-  const stringSchema = v.string();
+  const schema = v.string();
 
   const table = [
     { title: "contains", value: "what", expected: true },
@@ -43,21 +42,20 @@ describe(`"${VALUE}"`, () => {
   ];
 
   test.each(table)('$title "$value"', ({ value, expected }) => {
-    stringSchema.contains(value);
-    expect(stringSchema.isValid(VALUE)).toBe(expected);
+    schema.contains(value);
+    expect(schema.isValid(VALUE)).toBe(expected);
   });
 
   test("validate with last contained result", () => {
-    expect(stringSchema.isValid(VALUE)).toBe(false);
+    expect(schema.isValid(VALUE)).toBe(false);
   });
 });
 
 describe("length method", () => {
-  const v = new Validator();
-  const stringSchema = v.string();
+  const schema = v.string();
 
   test("is valid length", () => {
-    stringSchema.minLength(10).minLength(4);
-    expect(stringSchema.isValid("Hexlet")).toBe(true);
+    schema.minLength(10).minLength(4);
+    expect(schema.isValid("Hexlet")).toBe(true);
   });
 });

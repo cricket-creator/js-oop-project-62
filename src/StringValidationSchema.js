@@ -15,10 +15,6 @@ class StringValidationSchema extends ValidationSchema {
     this.addValidation("contains", (value) => value?.includes(text));
     return this;
   }
-
-  isValid(value) {
-    return this.validate(value);
-  }
 }
 
 export default StringValidationSchema;
