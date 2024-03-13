@@ -4,6 +4,10 @@ import ObjectValidationSchema from "./ObjectValidationSchema.js";
 import StringValidationSchema from "./StringValidationSchema.js";
 
 class Validator {
+  constructor() {
+    this.customValidator = new Map();
+  }
+
   string() {
     return new StringValidationSchema(this);
   }
@@ -18,6 +22,13 @@ class Validator {
 
   object() {
     return new ObjectValidationSchema(this);
+  }
+
+  addValidator(schemaName, methodName, validationFn) {
+    this.customValidator.set(schemaName, {
+      ...this.customValidator.get(schemaName),
+      [methodName]: validationFn,
+    });
   }
 }
 

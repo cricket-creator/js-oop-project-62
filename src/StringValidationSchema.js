@@ -1,6 +1,8 @@
 import ValidationSchema from "./ValidationSchema.js";
 
 class StringValidationSchema extends ValidationSchema {
+  schemaName = "string";
+
   required() {
     this.addValidation("required", (value) => !!value);
     return this;

@@ -8,6 +8,18 @@ class ValidationSchema {
     this.validations.set(key, validationFn);
   }
 
+  test(methodName, comparisonValue) {
+    const customMethod = this.validator.customValidator.get(this.schemaName);
+    this.addValidation(methodName, (value) => {
+      const validationFn = customMethod[methodName];
+      if (!validationFn) {
+        throw new Error(`${methodName} method doesn't exist`);
+      }
+      return validationFn(value, comparisonValue);
+    });
+    return this;
+  }
+
   validate(value) {
     const entries = [...this.validations];
     return entries.every(([key, validationFn]) => {
